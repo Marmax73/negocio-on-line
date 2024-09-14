@@ -1,0 +1,29 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+
+
+model Task {
+  id Int @id @default(autoincrement())
+  title String
+  description String? //el signo significa "no requerido"
+  createdAt DateTime @default(now())
+
+}
+
+model users {
+  id       Int     @id @default(autoincrement())
+  nombre String
+  apellido String
+  email    String   @unique
+  password String
+}
